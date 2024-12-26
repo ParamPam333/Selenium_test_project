@@ -14,3 +14,9 @@ class LoginPageLocators():
     PASS_field_reg2 = (By.CSS_SELECTOR, "input[name=registration-password2]")
     REG_BTN=(By.CSS_SELECTOR, "button[name=registration_submit]")
 
+class ProductPageLocators():
+    basket_btn = (By.CSS_SELECTOR, "button.btn-add-to-basket")
+    product_name = (By.CSS_SELECTOR, "div.col-sm-6 h1")
+    product_price=(By.CSS_SELECTOR, "div.col-sm-6 p.price_color")
+    product_name_in_basket=(By.CSS_SELECTOR, "div.alert-safe div.alertinner strong")
+    product_price_in_basket=(By.CSS_SELECTOR, "div.alert-info div.alertinner strong")
