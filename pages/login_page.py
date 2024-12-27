@@ -21,3 +21,13 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.PASS_field_reg), "Regestration pass field is not presented"
         assert self.is_element_present(*LoginPageLocators.PASS_field_reg2), "Regestration repit pass field is not presented"
         assert self.is_element_present(*LoginPageLocators.REG_BTN), "Regestration button is not presented"
+
+    def register_new_user(self, email, password):
+        reg_email=self.browser.find_element(*LoginPageLocators.EMAIL_field_reg)
+        reg_email.send_keys(email)
+        reg_pass=self.browser.find_element(*LoginPageLocators.PASS_field_reg)
+        reg_pass2=self.browser.find_element(*LoginPageLocators.PASS_field_reg2)
+        reg_pass.send_keys(password)
+        reg_pass2.send_keys(password)
+        reg_btn=self.browser.find_element(*LoginPageLocators.REG_BTN)
+        reg_btn.click()
