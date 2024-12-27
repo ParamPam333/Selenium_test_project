@@ -1,6 +1,8 @@
 from .pages.product_page import ProductPage
 import pytest
-from.pages.locators import ProductPageLocators
+from.pages.locators import ProductPageLocators, BasketPageLocators
+from .pages.basket_page import BasketPage
+
 
 import time
 
@@ -20,7 +22,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.open()   
     page.go_to_basket()
     page.solve_quiz_and_get_code()
-    page.basket_checked()'''
+    page.basket_checked()
 
 @pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
@@ -45,4 +47,14 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.open()  
     page.go_to_basket()
     assert page.is_disappeared(*ProductPageLocators.succ_message), \
-    "Success message is presented, but should not be"
+    "Success message is presented, but should not be"'''
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page=BasketPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    assert page.is_not_element_present(*BasketPageLocators.PRODUCT_IN_BASKET), \
+       "Product in basket"
+    page.basket_is_empty()
+    
